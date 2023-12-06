@@ -3,7 +3,7 @@ import cors from "cors";
 import bodyParser from "body-parser";
 import viewEngine from "./config/viewEngine";
 import initWebRouters from "./router/web";
-import conNectDB from "./config/connectDB";
+import conNectDB from "./config/conNectDB";
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
