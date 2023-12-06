@@ -1,9 +1,9 @@
 import express from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
-import viewEngine from "./config/viewEngine";
-import initWebRouters from "./router/web";
-import conNectDB from "./config/conNectDB";
+import viewEngine from "./src/config/viewEngine";
+import initWebRouters from "./src/router/web";
+import conNectDB from "./src/config/conNectDB";
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
