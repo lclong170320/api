@@ -6,6 +6,7 @@ module.exports = {
     database: process.env.DB_DBNAME,
     host: process.env.DB_HOST,
     dialect: "mysql",
+    dialectModule: require("mysql2"),
   },
   test: {
     username: "root",
@@ -20,5 +21,6 @@ module.exports = {
     database: process.env.DB_DBNAME,
     host: process.env.DB_HOST,
     dialect: "mysql",
+    dialectModule: require("mysql2"),
   },
 };
