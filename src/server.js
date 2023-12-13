@@ -5,7 +5,7 @@ import viewEngine from "./config/viewEngine";
 import initWebRouters from "./router/web";
 import conNectDB from "./config/conNectDB";
 var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+var morgan = require("morgan");
 
 require("dotenv").config();
 
@@ -46,7 +46,7 @@ const swaggerSpec = swaggerJSDoc(options);
 
 const app = express();
 
-app.use(logger("dev"));
+app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -58,7 +58,7 @@ initWebRouters(app);
 
 conNectDB();
 app.use(
-  "/",
+  "/docs",
   swaggerUi.serve,
   swaggerUi.setup(swaggerSpec, { customCssUrl: CSS_URL })
 );
