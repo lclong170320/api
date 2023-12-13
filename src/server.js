@@ -34,6 +34,8 @@ const swaggerDefinition = {
     },
   ],
 };
+const CSS_URL =
+  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
 const options = {
   swaggerDefinition,
   // Paths to files containing OpenAPI definitions
@@ -55,7 +57,11 @@ viewEngine(app);
 initWebRouters(app);
 
 conNectDB();
-app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use(
+  "/",
+  swaggerUi.serve,
+  swaggerUi.setup(swaggerSpec, { customCssUrl: CSS_URL })
+);
 
 // app.get("/", (req, res) => {
 //   res.send("Hello World!");
