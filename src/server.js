@@ -29,7 +29,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: "http://localhost:3000",
+      url: "https://api-longs-projects-baea4db2.vercel.app",
       description: "Development server",
     },
   ],
