@@ -44,7 +44,6 @@ const swaggerSpec = swaggerJSDoc(options);
 
 const app = express();
 
-app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -56,6 +55,8 @@ viewEngine(app);
 initWebRouters(app);
 
 conNectDB();
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
 // app.get("/", (req, res) => {
 //   res.send("Hello World!");
 // });
