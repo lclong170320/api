@@ -20,7 +20,16 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 // routes
-
+/**
+ * @swagger
+ * /categories:
+ *   get:
+ *    summary: get a category
+ *    description: get a category
+ *    responses:
+ *      200:
+ *         description: a list of categories
+ */
 router.get("/", getAll);
 router.post("/", upload.single("category_img"), createSchema, create);
 router.put("/:id", upload.single("category_img"), updateSchema, update);
@@ -45,8 +54,7 @@ function getAll(req, res, next) {
 
 function create(req, res, next) {
   const file = req.file;
-  if (file.mimetype == 'image/jpeg' || file.mimetype == 'image/png')
-  {
+  if (file.mimetype == "image/jpeg" || file.mimetype == "image/png") {
     const params = req.body;
     params.category_img = file.path;
     categoryService
@@ -54,43 +62,39 @@ function create(req, res, next) {
       .then(() => res.json({ message: "Category created successfully" }))
       .catch(next);
   } else {
-  fs.unlink(file.path, err => {
-    res
-      .status(403)
-      .contentType("text/plain")
-      .end("Không phải là ảnh vui lòng chọn lại");
-  });
-}
-}
-
-
-function update(req, res, next) {
-  const file = req.file;
-  if(file){
-    if (file.mimetype == 'image/jpeg' || file.mimetype == 'image/png')
-    {
-      const params = req.body;
-      params.category_img = file.path;
-      categoryService
-      .update(req.params.id, params)
-      .then(() => res.json({ message: "Category updated successfully" }))
-      .catch(next);
-    } else {
-    fs.unlink(file.path, err => {
+    fs.unlink(file.path, (err) => {
       res
         .status(403)
         .contentType("text/plain")
         .end("Không phải là ảnh vui lòng chọn lại");
     });
   }
-  }
-  else {
+}
+
+function update(req, res, next) {
+  const file = req.file;
+  if (file) {
+    if (file.mimetype == "image/jpeg" || file.mimetype == "image/png") {
+      const params = req.body;
+      params.category_img = file.path;
+      categoryService
+        .update(req.params.id, params)
+        .then(() => res.json({ message: "Category updated successfully" }))
+        .catch(next);
+    } else {
+      fs.unlink(file.path, (err) => {
+        res
+          .status(403)
+          .contentType("text/plain")
+          .end("Không phải là ảnh vui lòng chọn lại");
+      });
+    }
+  } else {
     const params = req.body;
     categoryService
-    .update(req.params.id, params)
-    .then(() => res.json({ message: "Category updated successfully" }))
-    .catch(next);
-
+      .update(req.params.id, params)
+      .then(() => res.json({ message: "Category updated successfully" }))
+      .catch(next);
   }
 }
 
