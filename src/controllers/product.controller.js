@@ -20,7 +20,18 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 // routes
-
+/**
+ * @swagger
+ * /products:
+ *   get:
+ *    tags:
+ *       - Product
+ *    summary: get products
+ *    description: get products
+ *    responses:
+ *      200:
+ *         description: a list of products
+ */
 router.get("/", getAll);
 router.post("/", upload.array("product_img"), createSchema, create);
 router.put("/:id", upload.array("product_img"), updateSchema, update);

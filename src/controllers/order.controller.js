@@ -8,7 +8,18 @@ import validateRequest from "../middleware/validate-request.js";
 import orderService from "../services/order.service.js";
 
 // routes
-
+/**
+ * @swagger
+ * /orders:
+ *   get:
+ *    tags:
+ *       - Order
+ *    summary: get orders
+ *    description: get orders
+ *    responses:
+ *      200:
+ *         description: a list of orders
+ */
 router.get("/", getAll);
 router.get("/statistical", getAllStatistical);
 router.post("/", createSchema, create);

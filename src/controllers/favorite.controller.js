@@ -7,6 +7,19 @@ import validateRequest from "../middleware/validate-request.js";
 import favoriteService from "../services/favorite.service.js";
 
 // routes
+
+/**
+ * @swagger
+ * /favorites:
+ *   get:
+ *    tags:
+ *       - Favorite
+ *    summary: get favorites
+ *    description: get favorites
+ *    responses:
+ *      200:
+ *         description: a list of favorites
+ */
 router.get("/", getAll);
 router.post("/", createSchema, create);
 router.delete("/:id", _delete);

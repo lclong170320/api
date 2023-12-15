@@ -7,6 +7,18 @@ import validateRequest from "../middleware/validate-request.js";
 import commentService from "../services/comment.service";
 
 // routes
+/**
+ * @swagger
+ * /comments:
+ *   get:
+ *    tags:
+ *       - Comment
+ *    summary: get comments
+ *    description: get comments
+ *    responses:
+ *      200:
+ *         description: a list of comments
+ */
 router.get("/", getAll);
 router.post("/", createSchema, create);
 router.delete("/:id", _delete);

@@ -29,7 +29,7 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: "api-psi-teal.vercel.app/",
+      url: "https://api-psi-teal.vercel.app/",
       description: "Development server",
     },
   ],

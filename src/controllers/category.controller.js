@@ -24,6 +24,8 @@ var upload = multer({ storage: storage });
  * @swagger
  * /categories:
  *   get:
+ *    tags:
+ *       - Category
  *    summary: get a category
  *    description: get a category
  *    responses:
@@ -31,6 +33,7 @@ var upload = multer({ storage: storage });
  *         description: a list of categories
  */
 router.get("/", getAll);
+
 router.post("/", upload.single("category_img"), createSchema, create);
 router.put("/:id", upload.single("category_img"), updateSchema, update);
 router.delete("/:id", _delete);

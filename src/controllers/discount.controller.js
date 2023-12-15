@@ -6,6 +6,18 @@ import validateRequest from "../middleware/validate-request.js";
 import discountService from "../services/discount.service.js";
 
 // routes
+/**
+ * @swagger
+ * /discounts:
+ *   get:
+ *    tags:
+ *       - Discount
+ *    summary: get discounts
+ *    description: get discounts
+ *    responses:
+ *      200:
+ *         description: a list of discounts
+ */
 router.get("/", getAll);
 router.post("/", createSchema, create);
 router.put("/:id", updateSchema, update);
@@ -26,8 +38,6 @@ function getAll(req, res, next) {
     .then((discount) => res.json(discount))
     .catch(next);
 }
-
-
 
 function create(req, res, next) {
   discountService
@@ -55,10 +65,10 @@ function _delete(req, res, next) {
 function createSchema(req, res, next) {
   const schema = Joi.object({
     product_id: Joi.number().required(),
-    discount_name:  Joi.string().required(),
-    discount_percent:  Joi.number().required(),
+    discount_name: Joi.string().required(),
+    discount_percent: Joi.number().required(),
     discount_start: Joi.date().required(),
-    discount_end:  Joi.date().required(),
+    discount_end: Joi.date().required(),
   });
   validateRequest(req, next, schema);
 }
@@ -70,7 +80,6 @@ function updateSchema(req, res, next) {
     discount_percent: Joi.number().empty(""),
     discount_start: Joi.date().empty(""),
     discount_end: Joi.date().empty(""),
-
   }).with("password", "confirmPassword");
   validateRequest(req, next, schema);
 }
