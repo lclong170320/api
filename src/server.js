@@ -35,7 +35,7 @@ const swaggerDefinition = {
   ],
 };
 const CSS_URL =
-  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.3.0/swagger-ui.min.css";
+  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.6.2/swagger-ui.min.css";
 const options = {
   swaggerDefinition,
   // Paths to files containing OpenAPI definitions
@@ -60,7 +60,11 @@ conNectDB();
 app.use(
   "/docs",
   swaggerUi.serve,
-  swaggerUi.setup(swaggerSpec, { customCssUrl: CSS_URL })
+  swaggerUi.setup(swaggerSpec, {
+    customCss:
+      ".swagger-ui .opblock .opblock-summary-path-description-wrapper { align-items: center; display: flex; flex-wrap: wrap; gap: 0 10px; padding: 0 10px; width: 100%; }",
+    customCssUrl: CSS_URL,
+  })
 );
 
 // app.get("/", (req, res) => {
