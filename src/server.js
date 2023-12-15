@@ -29,13 +29,13 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: "https://api-longs-projects-baea4db2.vercel.app",
+      url: "api-psi-teal.vercel.app/",
       description: "Development server",
     },
   ],
 };
-const CSS_URL =
-  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
+// const CSS_URL =
+//   "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
 const options = {
   swaggerDefinition,
   // Paths to files containing OpenAPI definitions
@@ -57,11 +57,7 @@ viewEngine(app);
 initWebRouters(app);
 
 conNectDB();
-app.use(
-  "/docs",
-  swaggerUi.serve,
-  swaggerUi.setup(swaggerSpec, { customCssUrl: CSS_URL })
-);
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // app.get("/", (req, res) => {
 //   res.send("Hello World!");
