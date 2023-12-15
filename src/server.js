@@ -35,7 +35,7 @@ const swaggerDefinition = {
   ],
 };
 const CSS_URL =
-  "https://cdn.jsdelivr.net/npm/swagger-ui-themes@3.0.0/themes/3.x/theme-newspaper.css";
+  "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.3.0/swagger-ui.min.css";
 const options = {
   swaggerDefinition,
   // Paths to files containing OpenAPI definitions
